@@ -19,3 +19,38 @@ week7_tbl <- read_csv("../data/week3.csv", col_names = TRUE) %>%  #used read_csv
 
 
 # Visualization
+
+ggplot(week7_tbl, aes(timeStart, q1)) + 
+  geom_point() +
+  xlab("Date of Experiment")+
+  ylab("Q1 Score")+
+  labs(title = "Fig 1")
+
+ggplot(week7_tbl, aes(q1, q2, color = gender)) +
+  geom_point(position = "jitter") +
+  labs(title = "Fig 2")
+
+
+
+
+
+
+
+
+
+ggplot(week7_tbl, aes(gender, timeSpent)) +
+  geom_boxplot() +
+  xlab("Gender") +
+  ylab("Time elapsed (mins)") +
+  labs(title = "Fig 4")
+
+ggplot(week7_tbl, aes(q5, q7, color = condition)) + 
+  geom_point(position = "jitter") +
+  stat_smooth(method = "lm", se = FALSE) +
+  theme(
+    legend.position = "bottom",
+    legend.background = element_rect(fill = "#E0E0E0")
+    ) +
+  xlab("Score on Q5") +
+  ylab("Score on Q7") +
+  labs(title = "Fig 5")
