@@ -19,6 +19,8 @@ week7_tbl <- read_csv("../data/week3.csv", col_names = TRUE) %>%  #used read_csv
 
 
 # Visualization
+# Line 22-24: Create a single figure that displays a scatter plot matrix in the lower diagonal and a correlation matrix in the upper diagonal summarizing the interrelationships between all remaining q-variables (q1-q10 except q6), with density plots on the diagonal.
+
 
 ggplot(week7_tbl, aes(timeStart, q1)) + 
   geom_point() +
@@ -31,12 +33,12 @@ ggplot(week7_tbl, aes(q1, q2, color = gender)) +
   labs(title = "Fig 2")
 
 
-
-
-
-
-
-
+ggplot(week7_tbl, aes(q1, q2)) +
+  geom_point(position = "jitter") +
+  facet_grid(cols = vars(gender)) +
+  xlab("Score on Q1") +
+  ylab("Score on Q2") +
+  labs(title = "Fig 3")
 
 ggplot(week7_tbl, aes(gender, timeSpent)) +
   geom_boxplot() +
