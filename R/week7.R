@@ -1,7 +1,7 @@
 # Script Settings and Resources
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 library(tidyverse)
-# library()
+library(GGally)
 # library()
 # library()
 
@@ -19,9 +19,9 @@ week7_tbl <- read_csv("../data/week3.csv", col_names = TRUE) %>%  #used read_csv
 
 
 # Visualization
-# Line 22-24: Create a single figure that displays a scatter plot matrix in the lower diagonal and a correlation matrix in the upper diagonal summarizing the interrelationships between all remaining q-variables (q1-q10 except q6), with density plots on the diagonal.
-
-
+week7_tbl %>% 
+  select(q1:q10) %>% 
+  ggpairs(lower = list(continuous = "points"), upper = list(continuous = "cor"), diag = list(continuous = "densityDiag"))
 ggplot(week7_tbl, aes(timeStart, q1)) + 
   geom_point() +
   xlab("Date of Experiment")+
